@@ -1,20 +1,27 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { useTheme } from "next-themes";
+import Nav from "../Nav";
+import { GithubIcon } from "../Icons/Github";
 
 export function Layout({ children }) {
   return (
     <div className="w-full min-h-screen dark:bg-gray-700 dark:text-white">
       <div className="max-w-screen-sm px-4 py-12 mx-auto antialiased font-body">
-        <Header />
+        {/* <Header /> */}
+        <Nav />
         <main>{children}</main>
-        <footer className="text-lg font-light">
-          © {new Date().getFullYear()}, Built with{" "}
-          <a href="https://nextjs.org/">Next.js</a>
-          &#128293;
+        <footer className="text-md text-gray-600 flex dark:text-gray-200 justify-between">
+          <div>
+            © {new Date().getFullYear()} Justin Menestrina
+
+          </div>
+          <div>
+            <GithubIcon />
+          </div>
         </footer>
       </div>
     </div>
@@ -46,7 +53,6 @@ const Header = () => {
       })}
     >
       <div className={"max-w-md"}>
-        {isRoot ? <LargeTitle /> : <SmallTitle />}
       </div>
       {mounted && (
         <DarkModeSwitch
@@ -58,34 +64,3 @@ const Header = () => {
     </header>
   );
 };
-
-const LargeTitle = () => (
-  <h1>
-    <Link href="/">
-      <a
-        className={clsx(
-          "text-3xl font-black leading-none text-black no-underline font-display",
-          "sm:text-5xl",
-          "dark:text-white"
-        )}
-      >
-        Next.Js Starter Blog
-      </a>
-    </Link>
-  </h1>
-);
-
-const SmallTitle = () => (
-  <h1>
-    <Link href="/">
-      <a
-        className={clsx(
-          "text-2xl font-black text-black no-underline font-display",
-          "dark:text-white"
-        )}
-      >
-        Next.Js Starter Blog
-      </a>
-    </Link>
-  </h1>
-);

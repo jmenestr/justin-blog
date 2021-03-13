@@ -5,9 +5,9 @@
 @layer base {
   @import "./base.css";
 
-  a {
+  /* a {
     @apply text-neon-orange dark:text-yellow-500;
-  }
+  } */
 }
 
 @layer components {

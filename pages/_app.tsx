@@ -1,9 +1,10 @@
 import { ThemeProvider } from "next-themes";
 
-import "@assets/main.css";
+import "../assets/main.css";
 
 import "typeface-open-sans";
 import "typeface-merriweather";
+import "@fontsource/fira-code";
 
 export default function MyApp({ Component, pageProps }) {
   return (

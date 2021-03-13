@@ -117,6 +117,7 @@ module.exports = {
     fontFamily: {
       display: ["Open Sans", ...defaultSans],
       body: ["Merriweather", ...defaultSerif],
+      mono: ["Fira Code"]
     },
   },
   variants: {},

@@ -1,5 +1,25 @@
 import matter from "gray-matter";
-import fs from "fs";
+// import fs from "fs";
+import GhostContentAPI from "@tryghost/content-api";
+
+const api = new GhostContentAPI({
+  url: 'https://admin.justinmenestrina.com',
+  key: '03311ae29df08c7bb55dfcf308',
+  version: "v3"
+});
+
+
+export async function getGhostPosts() {
+  const settings = await api.settings.browse({ limit: 'all ' })
+  console.log(settings)
+  return await api.posts.browse({
+    limit: 'all'
+  }).catch(err => console.error(err))
+}
+
+export async function getSingleGhostPost(slug) {
+  return await api.posts.read({ slug }).catch(console.error)
+}
 
 export function getPostsFolders() {
   // Get all posts folders located in `content/posts`
