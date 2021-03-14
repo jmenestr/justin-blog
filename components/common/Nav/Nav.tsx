@@ -11,7 +11,7 @@ export const Nav = () => {
       <span className='font-mono text-lg'><Link href='/'>@justin.menestrina</Link></span>
       <div className='flex'>
         <Link href='/about'>about</Link>
-        <Link href='/posts'>blog</Link>
+        <Link href='/'>blog</Link>
       </div>
     </nav>
   )

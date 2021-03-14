@@ -23,6 +23,7 @@ const defaultSerif = [
 ];
 
 module.exports = {
+  important: true,
   purge: {
     mode: "all",
     content: [

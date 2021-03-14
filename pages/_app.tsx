@@ -6,10 +6,12 @@ import "typeface-open-sans";
 import "typeface-merriweather";
 import "@fontsource/fira-code";
 
-export default function MyApp({ Component, pageProps }) {
+const MyApp: React.FC<any> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider defaultTheme="system" enableSystem={true} attribute="class">
       <Component {...pageProps} />
     </ThemeProvider>
   );
 }
+
+export default MyApp;

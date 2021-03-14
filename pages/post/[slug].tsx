@@ -1,17 +1,13 @@
-import Link from "next/link";
-import ReactMarkdown from "react-markdown/with-html";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import style from "react-syntax-highlighter/dist/cjs/styles/prism/dracula";
-
 import { Layout, Image, SEO, Bio } from "@components/common";
-import { getGhostPosts, getPostBySlug, getPostsSlugs, getSingleGhostPost } from "@utils/posts";
+import { PostsOrPages } from "@tryghost/content-api";
+import { getGhostPosts, getSingleGhostPost } from "@utils/posts";
 
-export default function Post({ ghostPostData }) {
+const Post: React.FC<any> = ({ ghostPostData }) => {
   return (
     <Layout>
       <style type="text/css">{`${ghostPostData.codeinjection_styles}`}</style>
 
-      <div className='prose'>
+      <div className='prose dark:prose-dark'>
         <h1>{ghostPostData.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: ghostPostData.html }} />
       </div>
@@ -39,11 +35,13 @@ export default function Post({ ghostPostData }) {
   );
 }
 
+export default Post;
+
 export async function getStaticPaths() {
   // const paths = getPostsSlugs();
   const ghostPosts = await getGhostPosts();
 
-  const paths = ghostPosts.map((post) => ({
+  const paths = (ghostPosts as PostsOrPages).map((post: any) => ({
     params: { slug: post.slug },
   }))
   console.log(paths)
@@ -53,7 +51,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getStaticProps({ params: { slug } }: any) {
   // const postData = getPostBySlug(slug);
   const ghostPostData = await getSingleGhostPost(slug)
   // if (!postData.previousPost) {
@@ -67,20 +65,3 @@ export async function getStaticProps({ params: { slug } }) {
   return { props: { ghostPostData } };
 }
 
-const CodeBlock = ({ language, value }) => {
-  return (
-    <SyntaxHighlighter style={style} language={language}>
-      {value}
-    </SyntaxHighlighter>
-  );
-};
-
-const MarkdownImage = ({ alt, src }) => (
-  <Image
-    alt={alt}
-    src={require(`../../content/assets/${src}`)}
-    webpSrc={require(`../../content/assets/${src}?webp`)}
-    previewSrc={require(`../../content/assets/${src}?lqip`)}
-    className="w-full"
-  />
-);
