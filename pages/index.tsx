@@ -5,7 +5,6 @@ import dayjs from 'dayjs';
 
 
 const Home: React.FC<any> = ({ ghostPosts }) => {
-  console.log(ghostPosts)
   return (
     <Layout>
       <SEO title="All posts" />
@@ -13,7 +12,6 @@ const Home: React.FC<any> = ({ ghostPosts }) => {
       <h1 className='mb-2 text-3xl font-display text-gray-500 dark:text-gray-300 '>All Posts</h1>
       {
         ghostPosts.map((post: any) => {
-          console.log(post)
           return (
             <div key={post.id} className='mt-6 mb-12'>
               <Link href="/post/[slug]" as={`/post/${post.slug}`}>

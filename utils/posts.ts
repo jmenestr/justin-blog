@@ -11,7 +11,6 @@ const api = new GhostContentAPI({
 
 export async function getGhostPosts() {
   const settings = await api.settings.browse({ limit: 'all ' })
-  console.log(settings)
   return await api.posts.browse({
     limit: 'all'
   }).catch(err => console.error(err))

@@ -44,7 +44,6 @@ export async function getStaticPaths() {
   const paths = (ghostPosts as PostsOrPages).map((post: any) => ({
     params: { slug: post.slug },
   }))
-  console.log(paths)
   return {
     paths,
     fallback: false,
@@ -61,7 +60,6 @@ export async function getStaticProps({ params: { slug } }: any) {
   // if (!postData.nextPost) {
   //   postData.nextPost = null;
   // }
-  console.log(ghostPostData, slug)
   return { props: { ghostPostData } };
 }
 

@@ -49,7 +49,6 @@ const ThemeSelector = () => {
 
   const isDarkMode = resolvedTheme === "dark";
 
-  console.log(resolvedTheme)
   return (
     <div
       className={clsx("flex items-center justify-between mb-2")}
